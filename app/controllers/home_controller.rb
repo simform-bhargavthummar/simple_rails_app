@@ -10,4 +10,7 @@ class HomeController < ApplicationController
       
   end
 
+  def hello
+    @world = "World"
+  end
 end
