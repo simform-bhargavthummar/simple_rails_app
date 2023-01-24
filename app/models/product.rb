@@ -9,6 +9,7 @@ class Product < ApplicationRecord
     before_validation :print_notice
     after_save :print_status
     
+    
     def print_notice
         puts "Checking data..."
     end
@@ -16,4 +17,7 @@ class Product < ApplicationRecord
     def print_status
         puts "Data added sucessfully."
     end
+
+    # Date : 24-jan work
+    
 end

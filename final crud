@@ -1,0 +1,37 @@
+Product.create(name: "TV", description:"best 4K TV", price:50000 , quantity:40 , company_name: "Samsung")
+Product.create(name: "iPhone", description:"Best Apple device", price:70000 , quantity:30 , company_name: "Apple")
+Product.create(name: "DVD Player", description:"Best for DVD ", price:50000 , quantity:40 , company_name: "ONIDA")
+Product.create(name: "MI note 9", description:"Cheap Phone", price:10000 , quantity:90 , company_name: "MI")
+
+Product.create!(name: "AC", description:"5 star Ac", price:50000 , quantity:15 , company_name: "LG")
+#It will return exception if our data in not inserted or currepted.
+#Main difference between create and create! is "Create will return true and false" and "create! will return exception if our record is invalid."
+
+Product.create( description:"5 star Ac", price:50000 , quantity:15 , company_name: "LG").valid? 		
+#We set validations presence: true aftre that we try to insert this data and check is it ok or not. With the use of valid? it will return true or false for record validate.
+
+obj1 = Product.new( name: "Cooler" ,description:"5 star Ac", price:50000 , quantity:15 , company_name: "LG") 		
+#If we use new then it will not save automatically in database. For save it we have to use save method 
+"EX : obj1.save"
+
+reload!					# When we change anything in model file, Then we have to reload it then only it will show changes.
+
+
+Product.all				#Display all product
+
+Product.primary_key			#It will return the name of primary key field name
+
+Product.last				#To check last record
+
+Product.first				#To get first record
+
+Product.find 2 				#It will find the record which has record id is 2
+
+obj1 = Product.last			#Get record in object obj1
+obj1.update(name: "Headphone") 		#update it's name
+
+obj1.delete				#To delete obj1's record means last record will delete
+
+Product.pluck(:name)			#It will display only name of product means Display a perticuler column
+
+Product.order(:name)			#It will give record sorted by ascending order of name		
