@@ -1,0 +1,27 @@
+<h2 class="text-center">List of Product</h2>
+
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+        <div class="col">
+            <table class="table table-striped">
+              <thead>
+                <tr>  
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Company Name</th>
+                  </tr>
+              </thead>
+  
+                <tbody>
+                    <% @product.each do |id,name| %>
+                        <tr>
+                            <td> <%= id  %> </td>
+                            <td> <%= name  %> </td>
+                            <td> <%= link_to 'Show Record',  show_path(id), class:"btn btn-primary" %> </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+             </table>
+        </div>
+    </div>
+</div>

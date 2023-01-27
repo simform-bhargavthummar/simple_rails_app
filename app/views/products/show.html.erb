@@ -1,0 +1,36 @@
+<h2 class="text-center">Your selected product Details</h1><br/>
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+        <div class="col">
+            <table class="table table-striped">
+              <thead>
+                <tr>  
+                    <th scope="col">Id</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Manufacturing Company</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    
+                  
+                  </tr>
+              </thead>
+  
+                <tbody>
+                        <tr>
+                            <td> <%=  @product.id  %> </td>
+                            <td> <%=  @product.name  %> </td>
+                            <td> <%=  @product.description  %> </td>
+                            <td> <%=  @product.company_name  %> </td>
+                            
+                            <td> <%=  @product.price  %> </td>
+                            <td> <%=  @product.quantity  %> </td>
+                            
+                            
+                            
+                        </tr>
+                </tbody>
+             </table>
+        </div>
+    </div>
+</div>
