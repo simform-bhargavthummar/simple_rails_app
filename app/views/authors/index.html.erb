@@ -1,0 +1,46 @@
+
+<h2 class="text-center"> List of Aurthor </h2>
+
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+     <%= link_to 'Add Author', new_author_path %>   
+      
+        <div class="col">
+
+            <table class="table table-striped">
+              <thead>
+                <tr>  
+                  <th scope="col">Id</th>
+                  <th scope="col">First name </th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Date Of Birth</th>
+                  <th scope="col">Email</th>
+                  
+                  </tr>
+              </thead>
+  
+                <tbody>
+                    <% @author.each do |a| %>
+                        <tr>
+                            <td> <%= a.id  %> </td>
+                            <td> <%= a.first_name  %> </td>
+                            <td> <%= a.last_name  %> </td>
+                            <td> <%= a.dob %> </td>
+                            <td> <%= a.email %> </td>
+                            
+                            <td> <%= link_to 'Update Record',  edit_author_path(a.id), class:"btn btn-primary" %> </td>
+                            <td> <%= link_to 'Delete Record',   author_path(a.id), data: {turbo_method: :delete, turbo_confirm: "Confirmation for delete the author"} , class:"btn btn-primary" %> </td>
+                            
+                        </tr>
+                    <% end %>
+                </tbody>
+
+             </table>
+             
+        </div>
+    </div>
+</div>
+
+<%# <% end_form_tag %>
+   
+

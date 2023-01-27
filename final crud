@@ -35,3 +35,38 @@ obj1.delete				#To delete obj1's record means last record will delete
 Product.pluck(:name)			#It will display only name of product means Display a perticuler column
 
 Product.order(:name)			#It will give record sorted by ascending order of name		
+
+****************** For Author and Books******************
+Author.create(first_name: "Naruto", last_name: "Uzumaki" , dob:"10-1-2001", email: "uzumakin123@gmail.com" )
+Author.create(first_name: "Kakashi", last_name: "Hatake" , dob:"1990/05/25", email: "hatake456@gmail.com" )
+
+#in date both format will work.
+
+Author.create(first_name: "Kakashi", last_name: "Hatake" , dob:"1990/05/25").valid?
+#It returns false
+
+Author.create!(first_name: "Kakashi", last_name: "Hatake" , dob:"1990/05/25").valid?
+#It returns exception like validation failed: Email can't be blank
+
+
+#For add 'age' column in Author
+rails g migration AddAgeToAuthor age:integer  
+
+#For remove 'age' column from Aurthor
+rails g migration RemoveAgeFromAuthor age:integer
+
+#Generating book model
+rails g model Book name:string price:decimal
+
+#give reference key or foreign key to Author
+rails g migration AddBookRefToAuthors book:references
+
+#To check which migration is applied and how many of them are up and down.
+rails db:migrate:status 
+
+#TO join the tables
+rails generate migration CreateJoinTableAuthorBook author book
+
+#create migration for up/down
+rails g migration UpDownAndReversible
+
