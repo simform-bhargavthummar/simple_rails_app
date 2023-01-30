@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_27_120918) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_081319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.date "dob"
+    t.date "date_of_birth"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +36,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_27_120918) do
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
     t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "alt_name"
+    t.string "imageable_type", null: false
+    t.bigint "imageable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
   create_table "products", force: :cascade do |t|

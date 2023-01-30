@@ -1,4 +1,7 @@
 class Author < ApplicationRecord
+    
+    has_many :books
+    has_many :images, as: :imageable
     validates :first_name, :last_name, :dob, :email, presence: true
     validates :email, uniqueness: true
     validates :first_name, :last_name, length: {minimum:2, maximum:50 , message: "You can write minimum 2 letters and maximum 50 letters" }

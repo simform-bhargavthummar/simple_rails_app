@@ -1,0 +1,42 @@
+
+<h2 class="text-center"> List of Books </h2>
+
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+     <%= link_to 'Add Book', new_book_path %>   
+      
+        <div class="col">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>  
+                        <th scope="col">Id</th>
+                        <th scope="col">Book Name </th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Author Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% @book.each do |b| %>
+                        <tr>
+                            <td> <%= b.id  %> </td>
+                            <td> <%= b.name  %> </td>
+                            <td> <%= b.price  %> </td>
+                            <td> <%= b.author.first_name %> </td>
+                            <td> <%= link_to 'Update Record',  edit_book_path(b.id), class:"btn btn-primary" %> </td>
+                            <td> <%= link_to 'Delete Record',   book_path(b.id), data: {turbo_method: :delete, turbo_confirm: "Confirmation for delete the book"} , class:"btn btn-primary" %> </td>
+                            
+                        </tr>
+                    <% end %>
+                </tbody>
+
+             </table>
+             
+        </div>
+    </div>
+</div>
+
+<%# <% end_form_tag %>
+   
+

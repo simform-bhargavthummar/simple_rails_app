@@ -70,3 +70,5 @@ rails generate migration CreateJoinTableAuthorBook author book
 #create migration for up/down
 rails g migration UpDownAndReversible
 
+#create migration for rename dob to date_of_birth
+ rails g migration RenameDOBToDateOfBirth 
