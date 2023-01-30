@@ -25,8 +25,8 @@
 
   <div class="row">
       <div class="col-4">
-        <%= form.label :dob %><br>
-        <%= form.text_field :dob, class:"form-control" %>
+        <%= form.label :date_of_birth %><br>
+        <%= form.text_field :date_of_birth, class:"form-control" %>
         <% @author.errors.full_messages_for(:dob).each do |message| %>
         <div> <%= message %> </div>
           <% end %>

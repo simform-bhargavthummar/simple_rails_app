@@ -11,7 +11,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      redirect_to index_path
+      redirect_to :action => 'index'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,13 +29,16 @@ class AuthorsController < ApplicationController
   #For delete the author
   def destroy
     @author = Author.find(params[:id])
+    # x = Book.where(author_id: :id)
+    # x.delete_all
     @author.destroy
+    
     redirect_to root_path
   end 
 
   private
   def author_params
-    params.require(:author).permit(:first_name, :last_name, :dob, :email)
+    params.require(:author).permit(:first_name, :last_name, :date_of_birth, :email)
   end
 
 end

@@ -6,21 +6,20 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @auth_name = Book.all.map{ |a| [a.id] }
+    @auth_name = Author.all.map{ |a| [a.id] }
   end
 
   def create
     @book = Book.create(book_params)
-
     if @book.save
-      redirect_to :action => 'index'
+      redirect_to :action => 'index'  
     end
   end
 
    #For update the book
    def edit
     @book = Book.find(params[:id]) 
-    @auth_name = Book.all.map{ |a| [a.id] }
+    @auth_name = Author.all.map{ |a| [a.id] }
   end
 
   def update
@@ -37,6 +36,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:name, :price, :book_id)
+    params.require(:book).permit(:name, :price, :author_id)
   end
 end

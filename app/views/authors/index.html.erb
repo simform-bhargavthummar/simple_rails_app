@@ -25,9 +25,8 @@
                             <td> <%= a.id  %> </td>
                             <td> <%= a.first_name  %> </td>
                             <td> <%= a.last_name  %> </td>
-                            <td> <%= a.dob %> </td>
+                            <td> <%= a.date_of_birth %> </td>
                             <td> <%= a.email %> </td>
-                            
                             <td> <%= link_to 'Update Record',  edit_author_path(a.id), class:"btn btn-primary" %> </td>
                             <td> <%= link_to 'Delete Record',   author_path(a.id), data: {turbo_method: :delete, turbo_confirm: "Confirmation for delete the author"} , class:"btn btn-primary" %> </td>
                             
@@ -36,11 +35,12 @@
                 </tbody>
 
              </table>
-             
+             <%# <%= link_to 'Redirect to book', book_path %>   
+              
         </div>
     </div>
 </div>
 
-<%# <% end_form_tag %>
+
    
 

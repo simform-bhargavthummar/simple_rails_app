@@ -9,7 +9,7 @@ class Book < ApplicationRecord
     
     private
         def verify_space
-            self.name = name.strip    
+             self.name = name.strip    
         end
 
-end
+end 

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root "books#index"
+  root "authors#index"
   resources :books
   resources :authors
-  get "/show/:id" , to: 'authors#show' , as: "show"
+   
+  #get "/show/:id" , to: 'authors#show' , as: "show"
   
   # get "/products" , to: 'products#index' , as: "products" 
   # get "/show/:id" , to: 'products#show' , as: "show"
