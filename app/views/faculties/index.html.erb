@@ -1,0 +1,43 @@
+<h2 class="text-center"> List of Faculties </h2>
+
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+
+        <%= link_to 'Add Faculties', new_faculty_path %>
+        
+        <div class="col">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>  
+                        <th scope="col"> Id </th>
+                        <th scope="col"> First name </th>
+                        <th scope="col"> Last Name </th>
+                        <th scope="col"> Phone Number </th>
+                        <th scope="col"> Email </th>
+                        <th scope="col"> Date Of Birth </th>
+                        <th scope="col"> Designation </th>     
+                    </tr>
+                </thead>
+  
+                <tbody>
+                    <% @faculty.each do |f|  %>
+                        <tr>
+                            <td> <%= f.id %> </td>
+                            <td> <%= f.first_name %> </td>
+                            <td> <%= f.last_name %> </td>
+                            <td> <%= f.phone_number %> </td>
+                            <td> <%= f.email %> </td>
+                            <td> <%= f.dob %> </td>
+                            <td> <%= f.designation %> </td>
+                            
+                            <td> <%= link_to 'Update record', edit_faculty_path(f.id),class: "btn btn-primary" %> </td>
+                            <td> <%= link_to 'Delete record', faculty_path(f.id), data: {turbo_method: :delete, turbo_confirm: "Confirmation for delete the faculty"} ,class: "btn btn-primary" %> </td> 
+                        </tr>
+                    <% end %>
+                </tbody>
+             </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,40 @@
+<%= form_with model: @student do |form| %>
+    <div class="container">
+
+        <h1 class="text-center">Add Students</h1>
+        <div class="row">  
+            <div class="col-4">
+                <%= form.label :first_name %><br>
+                <%= form.text_field :first_name , class:"form-control" %>
+            </div>
+        </div><br/>
+
+        <div class="row">
+            <div class="col-4">
+                <%= form.label :last_name %><br>
+                <%= form.text_field :last_name, class:"form-control" %>
+            </div>
+        </div> <br/>
+
+        <div class="row">
+            <div class="col-4">
+                <%= form.label :dob %><br>
+                <%= form.date_field :dob, class:"form-control" %>
+            </div>
+        </div> <br/>
+
+        <div class="row">
+            <div class="col-4">
+                <%= form.label :department %><br>
+                <%= form.select :department, @std_department %>
+            </div>
+        </div> <br/>
+
+
+        <div>
+        <%= form.submit 'Insert data', class:"btn btn-primary" %>
+    </div>
+        
+</div>
+
+<% end %>
