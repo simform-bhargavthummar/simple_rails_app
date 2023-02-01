@@ -6,6 +6,9 @@
             <div class="col-4">
                 <%= form.label :first_name %><br>
                 <%= form.text_field :first_name , class:"form-control" %>
+                <% @faculty.errors.full_messages_for(:first_name).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div><br/>
 
@@ -13,6 +16,9 @@
             <div class="col-4">
                 <%= form.label :last_name %><br>
                 <%= form.text_field :last_name, class:"form-control" %>
+                <% @faculty.errors.full_messages_for(:last_name).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 
@@ -20,6 +26,9 @@
             <div class="col-4">
                 <%= form.label :dob %><br>
                 <%= form.date_field :dob, class:"form-control" %>
+                <% @faculty.errors.full_messages_for(:dob).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 
@@ -27,6 +36,9 @@
             <div class="col-4">
                 <%= form.label :phone_number %><br>
                 <%= form.text_field :phone_number, class:"form-control" %>
+                <% @faculty.errors.full_messages_for(:phone_number).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 
@@ -34,13 +46,19 @@
             <div class="col-4">
                 <%= form.label :email %><br>
                 <%= form.text_field :email, class:"form-control" %>
+                <% @faculty.errors.full_messages_for(:email).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
         
         <div class="row">
             <div class="col-4">
                 <%= form.label :designation %><br>
-                <%= form.select :designation, @fac_des %>
+                <%= form.text_field :designation, class: "form-control" %>
+                <% @faculty.errors.full_messages_for(:designation).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 

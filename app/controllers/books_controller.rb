@@ -10,9 +10,11 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
     if @book.save
-      redirect_to :action => 'index'  
+      redirect_to :action => 'index' 
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -23,8 +25,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.where(id: params[:id]).update(book_params)
-    redirect_to :action => 'index'
+    @book = Book.find(params[:id]) 
+    if @book.update(book_params)
+     redirect_to :action => 'index'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
    #For delete the book

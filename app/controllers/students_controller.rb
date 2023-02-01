@@ -3,30 +3,35 @@ class StudentsController < ApplicationController
     @student = Student.all
   end
 
-  def call_dept
-    @std_department = Student.distinct(:department).pluck(:department)
-  end
-
   def new
     @student = Student.new
   end
 
   def create
     @student = Student.new(student_param)
-   
+
     if @student.save
       redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
     end
+
   end
 
   def edit
     @student = Student.find(params[:id])
-    call_dept
   end
 
   def update
-    @student = Student.where(id: params[:id]).update(student_param)
-    redirect_to root_path
+    #@student = Student.where(id: params[:id]).update(student_param)
+    @student = Student.find(params[:id])
+
+    if @student.update(student_update)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+
   end
 
   def destroy
@@ -37,6 +42,10 @@ class StudentsController < ApplicationController
 
   private
     def student_param
+      params.require(:student).permit(:first_name, :last_name, :dob, :department, :terms_con)
+    end
+
+    def student_update
       params.require(:student).permit(:first_name, :last_name, :dob, :department)
     end
 end

@@ -6,6 +6,9 @@
             <div class="col-4">
                 <%= form.label :first_name %><br>
                 <%= form.text_field :first_name , class:"form-control" %>
+                <% @student.errors.full_messages_for(:first_name).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div><br/>
 
@@ -13,6 +16,9 @@
             <div class="col-4">
                 <%= form.label :last_name %><br>
                 <%= form.text_field :last_name, class:"form-control" %>
+                <% @student.errors.full_messages_for(:last_name).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 
@@ -20,16 +26,30 @@
             <div class="col-4">
                 <%= form.label :dob %><br>
                 <%= form.date_field :dob, class:"form-control" %>
+                <% @student.errors.full_messages_for(:dob).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 
         <div class="row">
             <div class="col-4">
                 <%= form.label :department %><br>
-                <%= form.select :department, @std_department %>
+                <%= form.text_field :department, class:"form-control" %>
+                <% @student.errors.full_messages_for(:department).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
             </div>
         </div> <br/>
 
+        <div class="row">
+            <div class="col-4">
+                <%= form.check_box :terms_con, :default => 'true' %> <a> Accept the terms & condition </a>
+                <% @student.errors.full_messages_for(:terms_con).each do |message| %>
+                    <p class="text-danger"> <%= message %></p>
+                <% end %>
+            </div>
+        </div> <br/>
 
         <div>
         <%= form.submit 'Insert data', class:"btn btn-primary" %>

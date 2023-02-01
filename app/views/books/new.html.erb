@@ -6,6 +6,9 @@
       <div class="col-4">
         <%= form.label :name %><br>
         <%= form.text_field :name , class:"form-control" %>
+        <% @book.errors.full_messages_for(:name).each do |message| %>
+          <p class="text-danger"> <%= message %> </p>
+        <% end %>
         
       </div>
     </div><br/>
@@ -14,13 +17,16 @@
       <div class="col-4">
         <%= form.label :price %><br>
         <%= form.text_field :price, class:"form-control" %>
+        <% @book.errors.full_messages_for(:price).each do |message| %>
+          <p class="text-danger"> <%= message %> </p>
+        <% end %>
        
       </div>
     </div> <br/>
 
   <div class="row">
       <div class="col-4">
-        <%= form.label :"Author Id" %><br>
+        <%= form.label :author_id %><br>
         <%= form.select(:author_id, @auth_name) %>
       </div>
     </div> <br/>
