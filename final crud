@@ -72,3 +72,24 @@ rails g migration UpDownAndReversible
 
 #create migration for rename dob to date_of_birth
  rails g migration RenameDOBToDateOfBirth 
+
+
+ ############################### rails validation ###########################
+    
+#generate student and faculty model
+rails g model Student first_name:string last_name:string dob:date department:string 
+rails g model Faculty first_name:string last_name:string dob:date phone_number:integer email:string designation:string  
+
+#ganarete controller for both
+rails g controller Students index new edit
+rails g controller Faculties index new edit
+
+#Adding data
+Student.create(first_name: "Kishan", last_name: "Lad", dob: "01-05-2001", department: "IT")
+Student.create(first_name: "Naruto", last_name: "Uzumaki", dob: "12-10-2005", department: "CE")
+Student.create(first_name: "Sasuke", last_name: "Uchiha", dob: "10-02-2006", department: "IT")
+
+Faculty.create(first_name: "Kakashi", last_name: "Hatake", dob: "22-11-1990", phone_number: 8547595645, email: "hatake99@gmail.com", designation: "Prof.")
+Faculty.create(first_name: "Iruka", last_name: "kaison", dob: "12-05-1992", phone_number: 9512478953, email: "kaisoni33@gmail.com@gmail.com", designation: "Ass. Prof.")
+
+

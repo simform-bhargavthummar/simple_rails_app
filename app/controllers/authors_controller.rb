@@ -22,8 +22,13 @@ class AuthorsController < ApplicationController
   end
 
   def update
-    @author = Author.where(id: params[:id]).update(author_params)
-    redirect_to root_path
+    @author = Author.find(params[:id]) 
+
+    if @author.update(author_params)
+      redirect_to :action => 'index'
+    else  
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   #For delete the author
@@ -32,13 +37,13 @@ class AuthorsController < ApplicationController
     # x = Book.where(author_id: :id)
     # x.delete_all
     @author.destroy
-    
-    redirect_to root_path
+      
+    redirect_to :action => 'index'
   end 
 
   private
-  def author_params
-    params.require(:author).permit(:first_name, :last_name, :date_of_birth, :email)
-  end
+    def author_params
+      params.require(:author).permit(:first_name, :last_name, :date_of_birth, :email)
+    end
 
 end
