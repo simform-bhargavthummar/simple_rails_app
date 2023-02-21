@@ -5,11 +5,23 @@ Rails.application.routes.draw do
   post '/find_email', to: "employees#find_email"
   get '/update_order', to: "employees#update_order"
   get '/decrese_order', to: "employees#change_order"
+
+  get '/sign_in', to: "sessions#new"
+  post '/sign_in', to: "sessions#create"
+  root "students#index"
+  get '/logout', to: "sessions#logout"
+  get '/enrol', to: "enrols#create_enrol"
+  post '/enrol', to: "users#index"
+  
+  resources :users
   resources :students
   resources :faculties
   resources :books
   resources :authors
   resources :employees
+  resources :sessions
+  resources :events
+  resources :enrols
    
   #get "/show/:id" , to: 'authors#show' , as: "show"
   
