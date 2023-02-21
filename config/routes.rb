@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+
+  get '/sign_in', to: "sessions#new"
+  post '/sign_in', to: "sessions#create"
   root "students#index"
+  get '/logout', to: "sessions#logout"
+  get '/enrol', to: "enrols#create_enrol"
+  post '/enrol', to: "users#index"
+  
+  resources :users
   resources :students
   resources :faculties
   resources :books
   resources :authors
+  resources :sessions
+  resources :events
+  resources :enrols
    
   #get "/show/:id" , to: 'authors#show' , as: "show"
   

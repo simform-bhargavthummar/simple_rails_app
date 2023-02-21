@@ -1,0 +1,45 @@
+<h2 class="text-center">Your Profile</h2>
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col">
+
+      <table class="table table-striped">
+        <thead> </thead>
+        <tbody>
+          <tr>
+            <td> Email </td>
+            
+            <td> <%= @y.email %> </td>
+          </tr>
+        </tbody>
+      </table><br><br>
+
+      <!--For events-->
+      <h3> Your Enrolled Event </h3>
+      <table class="table table-striped">
+        <thead> </thead>
+        <tbody>
+          <tr>
+            <th scope="col"> Event Name </th>
+            <th scope="col"> Description </th>
+            <th scope="col"> Event date </th>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <% @user_enrol.each do |u| %>
+            <tr>
+              <td> <%= u.name %> </td>
+              <td> <%= u.description %> </td>
+              <td> <%= u.event_date %> </td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table><br><br>
+      
+
+    </div>
+  </div>
+</div>
