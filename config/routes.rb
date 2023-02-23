@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  root "students#index"
+  #root "students#index"
+  root "employees#index"
+  get '/others', to: "employees#other_operations"
+  post '/find_email', to: "employees#find_email"
+  get '/update_order', to: "employees#update_order"
+  get '/decrese_order', to: "employees#change_order"
   resources :students
   resources :faculties
   resources :books
   resources :authors
+  resources :employees
    
   #get "/show/:id" , to: 'authors#show' , as: "show"
   
