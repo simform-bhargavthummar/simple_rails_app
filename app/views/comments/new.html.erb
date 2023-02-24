@@ -1,0 +1,10 @@
+<div class="text-center">
+	<h1>Give Comment</h1>
+	<%= form_with url: @comment do |form| %>
+		<%= form.label :comment %> &nbsp; &nbsp;
+		<%= form.text_field :comment, placeholder: "comment" %> <br><br>
+      	<%= form.hidden_field :users_id, value: session[:user_id] %>
+		<%= form.hidden_field :events_id, value: params[:event_id] %>	
+		<%= form.submit 'Submit' %>
+	<% end %>
+</div>

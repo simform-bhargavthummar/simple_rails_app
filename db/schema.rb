@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.index ["users_id"], name: "index_comments_on_users_id"
   end
 
+<<<<<<< HEAD
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -75,6 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> ec32acf (TE7-T122:rails-practice:Fix:Updating Active Record Association task)
   create_table "employees", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -85,7 +88,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.integer "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.integer "lock_version", default: 0, null: false
+=======
+>>>>>>> ec32acf (TE7-T122:rails-practice:Fix:Updating Active Record Association task)
   end
 
   create_table "enrols", force: :cascade do |t|

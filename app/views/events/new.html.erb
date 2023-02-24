@@ -10,7 +10,10 @@
 		
 		<%= form.label 'Event date', :event_date %>
 		<%= form.date_field :event_date %> <br><br>
-	
+
+    <%= form.label 'Event Category', :category_name %>
+		<%= form.select :category_id, @x %> <br><br>
+
     <%= form.hidden_field :user_id, value: session[:user_id] %>
 		
     <%= form.submit 'Create' %>

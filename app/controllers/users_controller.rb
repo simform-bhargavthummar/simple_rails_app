@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
   def index
-    if session[:user_id]==nil
+    if session[:user_id] == nil
       redirect_to sign_in_path
     else
       @u = User.find session[:user_id]
-      x = Event.all
-      @event = x.order("event_date DESC")
-
+       @x = Category.pluck(:category_name, :id)
+      if session[:c_id].nil?
+        @event = Event.all.order("event_date DESC")
+      else
+        @event = Event.where(category_id: session[:c_id]).order("event_date DESC")
+        session[:c_id] = nil
+      end
     end
   end
 
@@ -15,27 +19,28 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_param)
-    if @user.save
+    @user = User.create(email: user_params[:email], password: user_params[:password])
+    @user.create_address(address: user_params[:address])
+    
+    if @user
       redirect_to sign_in_path
     else
-      flash[:alert] = "Invalid details..."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def show 
-
-    @y = User.find session[:user_id]
-     @user_enrol = @y.events
-
-
+  def event_filter
+    session[:c_id] = params[:category_id]  
+    redirect_to users_path
   end
 
-
+  def show 
+    @y = User.find session[:user_id]
+     @user_enrol = @y.events
+  end
 
   private
-    def user_param
-      params.require(:user).permit(:email, :password)
+    def user_params
+      params.require(:user).permit(:email, :password, :address)
     end
 end
