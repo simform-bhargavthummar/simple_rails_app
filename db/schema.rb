@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_20_115258) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_24_105113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_115258) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "events_id"
+    t.bigint "users_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["events_id"], name: "index_comments_on_events_id"
+    t.index ["users_id"], name: "index_comments_on_users_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "age"
+    t.integer "no_of_order"
+    t.string "full_time_available"
+    t.integer "salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "enrols", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_115258) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -114,7 +147,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_115258) do
   end
 
   add_foreign_key "books", "authors"
+  add_foreign_key "comments", "events", column: "events_id"
+  add_foreign_key "comments", "users", column: "users_id"
   add_foreign_key "enrols", "events"
   add_foreign_key "enrols", "users"
+  add_foreign_key "events", "categories"
   add_foreign_key "events", "users"
 end
