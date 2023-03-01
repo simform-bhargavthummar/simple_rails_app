@@ -1,0 +1,74 @@
+<%= form_with model: @query_product do |form| %>
+  <div class="container">
+    <h1 class="text-center">Edit Products</h1>
+    <div class="row">  
+    	<div class="col-4">
+				<%= form.label :title %><br>
+				<%= form.text_field :title, class: "form-control" %>
+				<% @query_product.errors.full_messages_for(:title).each do |message| %>
+					<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div><br/>
+   
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :description %><br>
+				<%= form.text_field :description, class: "form-control" %>
+				<% @query_product.errors.full_messages_for(:description).each do |message| %>
+					<p class="text-danger"> <%= message %></p>
+				<% end %>
+				</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :price %><br>
+				<%= form.text_field :price, class: "form-control" %>
+				<% @query_product.errors.full_messages_for(:price).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :capacity %><br>
+				<%= form.text_field :capacity, class: "form-control" %>
+				<% @query_product.errors.full_messages_for(:capacity).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :is_active %> &nbsp; &nbsp;
+				<%= form.radio_button :is_active, "true" %>
+				<%= form.label :is_active, "Yes" %>  &nbsp; &nbsp;
+				<%= form.radio_button :is_active, "false" %>
+				<%= form.label :is_active, "No" %>
+
+				<% @query_product.errors.full_messages_for(:is_active).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :status %><br>
+				<%= form.select :status, @status ,class: "form-control" %>
+				<% @query_product.errors.full_messages_for(:status).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+		
+		<div>
+			<%= form.submit "Update data", class: "btn btn-primary" %>   
+    </div>
+        
+</div>
+
+<% end %>

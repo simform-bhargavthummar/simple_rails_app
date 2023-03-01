@@ -1,0 +1,41 @@
+
+<div class="container text-center">
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Customers</h1>
+    <%= link_to "Add Customers", new_customer_path %> <br>
+    
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+              <th scope="col"> Id </th>
+							<th scope="col"> First name </th>
+							<th scope="col"> Last Name </th>
+							<th scope="col"> Email </th>
+            	<th scope="col"> Phone Number </th>							
+							<th scope="col" colspan= 2 > Action </th>            
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @customer.each do |c| %>
+            <tr>
+              <td> <%= c.id %> </td>
+              <td> <%= c.first_name %> </td>
+              <td> <%= c.last_name %> </td>
+              <td> <%= c.email %> </td>
+              <td> <%= c.phone_number %> </td>
+              <td> <%= link_to "Edit", edit_customer_path(c.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", customer_path(c.id),
+                               data: { turbo_method: :delete,
+                                       turbo_confirm: 'Confirmation for delete the faculty' },
+                               class: "btn btn-primary" %> </td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><br>
+

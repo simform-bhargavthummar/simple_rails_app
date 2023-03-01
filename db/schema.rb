@@ -67,6 +67,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 77484e8 (TE7-T121:rails-practice:Feat:Advanced Active Record Query Interface)
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -76,8 +79,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
 =======
 >>>>>>> ec32acf (TE7-T122:rails-practice:Fix:Updating Active Record Association task)
+=======
+>>>>>>> 77484e8 (TE7-T121:rails-practice:Feat:Advanced Active Record Query Interface)
   create_table "employees", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -146,7 +152,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["query_product_id"], name: "index_orders_on_query_product_id"
   end
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 77484e8 (TE7-T121:rails-practice:Feat:Advanced Active Record Query Interface)
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"

@@ -1,0 +1,51 @@
+<%= form_with model: @order do |form| %>
+	<div class="container">
+
+		<h1 class="text-center">Add Orders</h1>
+		<div class="row">  
+			<div class="col-4">
+				<%= form.label :quantity %><br>
+				<%= form.text_field :quantity, class: "form-control" %>
+				<% @order.errors.full_messages_for(:quantity).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div><br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label "Product Name" %><br>
+				<%= form.select :query_product_id, @product, class: "form-control" %>
+				<% @order.errors.full_messages_for(:query_product_id).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :customer_id %><br>
+				<%= form.select :customer_id, @customer, class: "form-control" %>
+				<% @order.errors.full_messages_for(:customer_id).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+		
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :status %><br>
+				<%= form.select :status, @status, class: "form-control" %>
+				<% @order.errors.full_messages_for(:status).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+    <div>
+			<%= form.submit "Insert data", class: "btn btn-primary" %>
+    </div>
+        
+</div>
+
+<% end %>
