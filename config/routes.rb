@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/update_order', to: "employees#update_order"
   get '/decrese_order', to: "employees#change_order"
 
-
   get '/sign_in', to: "sessions#new"
   post '/sign_in', to: "sessions#create"
   get '/logout', to: "sessions#logout"
