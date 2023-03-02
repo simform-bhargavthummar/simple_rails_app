@@ -1,0 +1,71 @@
+<div class="container text-center ">
+
+	<h4> Most sales product by price </h4>
+		<table border = 1 align='center' >
+			<thead>
+				<th> Customer Name </th>
+				<th> Total Quantity </th>
+			</thead>
+
+			<tbody>
+				<% @sum_price.each do |sum_que|%>
+					<tr>
+						<td> <%= sum_que.first_name %> </td>
+						<td> <%= sum_que.total %> </td>
+						<tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	<h4> Most sales product by quantity </h4>
+		<table border = 1 align='center' >
+			<thead>
+				<th> Customer Name </th>
+				<th> Total Quantity </th>
+			</thead>
+
+			<tbody>
+				<% @sum_quantity.each do |sum_que|%>
+					<tr>
+						<td> <%= sum_que.first_name %> </td>
+						<td> <%= sum_que.total_que %> </td>
+						<tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	<h4> Most booked order of product </h4>
+	<table border = 1 align='center' >
+		<thead>
+			<th> Customer Name </th>
+			<th> Booked Order </th>
+		</thead>
+
+		<tbody>
+			<% @max_book_order.each do |book_orders|%>
+				<tr>
+					<td> <%= book_orders.first_name %> </td>
+					<td> <%= book_orders.most_book_order %> </td>
+					<tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<h4> Most canceled order of product </h4>
+	<table border=1 align='center'>
+		<thead>
+			<th> Customer Name </th>
+			<th> Cancelled Order </th>
+		</thead>
+
+		<tbody>
+			<% @max_cancel_order.each do |cancel_orders|%>
+				<tr>
+					<td> <%= cancel_orders.first_name %> </td>
+					<td> <%= cancel_orders.most_cancel_order %> </td>
+				<tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+

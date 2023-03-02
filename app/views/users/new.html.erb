@@ -1,0 +1,16 @@
+
+<div class="text-center">
+	<h1>Sign Up page</h1>
+	<%= form_with model: @user do |form| %>
+		<%= form.label 'Email', :email %>
+		<%= form.text_field :email %> <br><br>
+
+		<%= form.label 'Password', :password %>
+		<%= form.text_field :password %> <br><br>
+
+		<%= form.label 'Address', :address %>
+		<%= form.text_field :address %> <br><br>
+
+		<%= form.submit 'Register'  %>
+	<% end %>
+</div>

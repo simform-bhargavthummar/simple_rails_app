@@ -1,0 +1,51 @@
+<%= form_with model: @customer do |form| %>
+	<div class="container">
+
+		<h1 class="text-center">Edit Customers</h1>
+		<div class="row">  
+			<div class="col-4">
+				<%= form.label :first_name %><br>
+				<%= form.text_field :first_name , class:"form-control" %>
+				<% @customer.errors.full_messages_for(:first_name).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div><br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :last_name %><br>
+				<%= form.text_field :last_name, class:"form-control" %>
+				<% @customer.errors.full_messages_for(:last_name).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :email %><br>
+				<%= form.text_field :email, class:"form-control" %>
+				<% @customer.errors.full_messages_for(:email).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :phone_number %><br>
+				<%= form.text_field :phone_number, class:"form-control" %>
+				<% @customer.errors.full_messages_for(:phone_number).each do |message| %>
+						<p class="text-danger"> <%= message %></p>
+				<% end %>
+			</div>
+		</div> <br/>
+
+    <div>
+			<%= form.submit 'Insert data', class:"btn btn-primary" %>
+    </div>
+        
+</div>
+
+<% end %>
