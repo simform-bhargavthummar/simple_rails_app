@@ -70,7 +70,6 @@ class EmployeesController < ApplicationController
   end
 
   def other_operations
-    #5) List employees having age > 20 and < 40
     employee = Employee.all
     @que = []
     @que[0] = employee.where("age>20 AND age<40")
@@ -81,7 +80,7 @@ class EmployeesController < ApplicationController
     @que[5] = employee.order("age DESC")
     @que[6] = employee.order("no_of_order ASC")
     @que[7] = employee.where("salary > ?", 45000 )
-    #Que[8] e.select("first_name,sum(no_of_order) as order").group("first_name").having("sum(no_of_order)>5")
+    @que[8] = employee.select("first_name,sum(no_of_order) as order").group("first_name").having("sum(no_of_order)>5")
     @que[9] = employee.select(:id,:first_name,:last_name,:age).where("id>4 AND age>20").unscope(:where).reverse_order
     @que[10] = employee.select(:id,:first_name,:last_name,:age).where("id>4 AND age>20").order(:first_name).only(:where)
     @que[11] = employee.select(:first_name,:salary,:no_of_order).where("id>4").reselect(:id,:first_name,:age)
