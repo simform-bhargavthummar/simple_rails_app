@@ -1,0 +1,44 @@
+
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col">
+      <br><br>
+      <table class="table table-striped">
+        <thead>
+          <tr>  
+            <th scope="col">Id</th>
+            <th scope="col">Car name </th>
+            <th scope="col">Color</th>
+            <th scope="col">Price</th>
+            <th scope="col">Average</th>
+            <th scope="col" colspan=3> Action </th> 
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cars.each do |c| %>
+            <tr>
+              <td> <%= c.id %> </td>
+              <td> <%= c.name %> </td>
+              <td> <%= c.color %> </td>
+              <td> <%= c.price %> </td>
+              <td> <%= c.average %> </td>
+              <td> <%= link_to "PDF Download", car_path(c.id) %> </td>
+              <td> <%= link_to "Update Record", edit_car_path(c.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete Record", car_path(c.id), data: {
+                                                                turbo_method: :delete,
+                                                              turbo_confirm: "Confirmation for delete the Car",
+                                                            },
+                                                            class: "btn btn-primary" %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table> 
+    </div>
+  </div>
+</div>
+
+
+   
+

@@ -1,0 +1,22 @@
+<div align='center'>
+  <h2> Add Car </h2>
+  <%= form_with model: @car do |form| %>
+    <%= form.label 'Name'%>
+    <%= form.text_field :name %><br>
+    <%= custom_error(@car, :name) %><br>
+    
+    <%= form.label 'Color'%>
+    <%= form.text_field :color %><br>
+    <%= custom_error(@car, :color) %><br>
+    
+    <%= form.label 'Price'%>
+    <%= form.text_field :price %><br>
+    <%= custom_error(@car, :price) %><br>
+    
+    <%= form.label 'Average' %>
+    <%= form.text_field :average %><br>
+    <%= custom_error(@car, :average) %><br>
+    
+    <%= form.submit 'Edit Car' %>
+  <% end %>
+</div>

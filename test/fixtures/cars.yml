@@ -2,10 +2,12 @@
 
 one:
   name: MyString
-  email: MyString
-  password_digest: MyString
+  color: MyString
+  price: 1
+  average: 1
 
 two:
   name: MyString
-  email: MyString
-  password_digest: MyString
+  color: MyString
+  price: 1
+  average: 1
