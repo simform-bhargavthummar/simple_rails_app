@@ -4,7 +4,7 @@ class QueryProductsController < ApplicationController
   end
 
   def all_products
-    @query_product = QueryProduct.all.unscoped.all
+    @query_product = QueryProduct.unscoped
   end
 
   def new

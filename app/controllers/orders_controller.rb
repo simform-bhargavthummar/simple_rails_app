@@ -3,16 +3,17 @@ class OrdersController < ApplicationController
   def index
     @status = Order.statuses.keys
     status_data = Order.where(status: params[:status])
-    if params[:title].blank? && status_data.nil?
-      @order = Order.all
-    else
-      demo = QueryProduct.find_by_title(params[:title])
-      if demo == nil
-        @order = Order.all
-      else
-        @order = demo.orders.where(status: params[:status])
-      end
-    end
+    # if params[:title].blank? && status_data.nil?
+    #   @order = Order.all
+    # else
+    #   demo = QueryProduct.find_by_title(params[:title])
+    #   if demo == nil
+    #     @order = Order.all
+    #   else
+    #     @order = demo.orders.where(status: params[:status])
+    #   end
+    @orders = Order.includes(:customer, :query_product).all
+    #end
     
     # if status_data==0
     #   @order = Order.find_by_status(0)
