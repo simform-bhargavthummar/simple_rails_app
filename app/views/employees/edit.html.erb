@@ -1,0 +1,82 @@
+<%= form_with model: @employee do |form| %>
+<div class="container">
+
+    <h1 class="text-center">Update Employee Details</h1>
+    <div class="row">  
+      <div class="col-4">
+        <%= form.label :first_name %><br>
+        <%= form.text_field :first_name, class: "form-control" %>
+        <% @employee.errors.full_messages_for(:first_name).each do |message| %>
+          <div class="text-danger"> <%= message %></div>
+        <% end %>
+      </div>
+    </div><br/>
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :last_name %><br>
+        <%= form.text_field :last_name, class: "form-control" %>
+        <% @employee.errors.full_messages_for(:last_name).each do |message| %>
+        	<div class="text-danger"> <%= message %> </div>
+        <% end %>
+      </div>
+    </div> <br/>
+
+ 	  <div class="row">
+      <div class="col-4">
+        <%= form.label :email %><br>
+        <%= form.text_field :email, class: "form-control" %>
+        <% @employee.errors.full_messages_for(:email).each do |message| %>
+        	<div class="text-danger"> <%= message %> </div>
+        <% end %>
+      </div>
+    </div> <br/>
+
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :age %><br>
+        <%= form.text_field :age, class: "form-control" %>
+        <% @employee.errors.full_messages_for(:age).each do |message| %>
+       		<div class="text-danger"> <%= message %> </div>
+        <% end %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :no_of_order %><br>
+        <%= form.text_field :no_of_order, class: "form-control" %>
+        <% @employee.errors.full_messages_for(:no_of_order).each do |message| %>
+        	<div class="text-danger"> <%= message %> </div>
+        <% end %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :full_time_available %><br>
+        <%= form.text_field :full_time_available, class: "form-control" %>
+        <% @employee.errors.full_messages_for(:full_time_available).each do |message| %>
+        	<div class="text-danger"> <%= message %> </div>
+        <% end %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :salary %><br>
+        <%= form.text_field :salary, class:"form-control" %>
+        <% @employee.errors.full_messages_for(:salary).each do |message| %>
+       		<div class="text-danger"> <%= message %> </div>
+        <% end %>
+      	</div>
+    </div> <br/>
+
+    <div>
+      <%= form.submit "Insert data", class: "btn btn-primary -center" %>
+    </div>
+    
+</div>
+
+<% end %>
