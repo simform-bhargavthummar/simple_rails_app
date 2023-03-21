@@ -1,0 +1,32 @@
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <h2> Orders </h2>
+    <div class="col"> 
+      <table class="table table-striped">
+        <thead>
+          <tr>  
+            <th scope="col"> Id </th>
+            <th scope="col"> Product name </th>
+            <th scope="col"> Description </th>
+            <th scope="col"> Price </th>
+            <th scope="col"> Quantity </th>
+            <th scope="col"> Total </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order|  %>
+            <tr>
+              <td> <%= order.id %> </td>
+              <td> <%= order.product_layout.name %> </td>
+              <td> <%= order.product_layout.description %> </td>
+              <td> <%= order.product_layout.price %> </td>
+              <td> <%= order.quantity %> </td>
+              <td> <%= order.total %> </td>           
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

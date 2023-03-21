@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   #root "students#index"
   #root "employees#index"
   #root "customers#root"
-  # root "user_conts#check_login"
-  root "product_routes#index"
+  #root "user_conts#check_login"
+  #root "product_routes#index"
+  root to: "product_layouts#index"
   get '/others', to: "employees#other_operations"
   post '/find_email', to: "employees#find_email"
   get '/update_order', to: "employees#update_order"
@@ -45,6 +46,10 @@ Rails.application.routes.draw do
     resources :v1 
   end
 
+
+  devise_for :user_layouts
+  resources :order_layouts
+  resources :product_layouts
   resources :students
   resources :faculties
   resources :books

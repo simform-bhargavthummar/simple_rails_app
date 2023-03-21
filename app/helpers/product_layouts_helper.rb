@@ -1,0 +1,2 @@
+module ProductLayoutsHelper
+end
