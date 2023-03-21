@@ -1,0 +1,41 @@
+<div class="container text-center">
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Products</h1>
+    <%= link_to "Add Products", new_product_route_path %> <br>
+    <%= link_to "Customer Page", business_customer_routes_path %> <br>
+
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Id </th> 
+            <th scope="col"> Title </th>
+            <th scope="col"> Price </th>
+            <th scope="col"> Company Name </th>
+            <th scope="col" colspan=4 > Action </th>
+                        
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @products.each do |p| %>
+            <tr>
+              <td> <%= p.id %> </td>
+              <td> <%= p.title %> </td>
+              <td> <%= p.price %> </td>
+              <td> <%= p.company_name %> </td>
+              <td> <%= link_to "Edit", edit_product_route_path(p.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", product_route_path(p.id),
+                               data: { turbo_method: :delete,
+                                       turbo_confirm: "Confirmation for delete the product" },
+                               class: "btn btn-primary" %> </td>
+              <td><%= link_to "Add Orders", new_product_route_order_route_path(p.id) %></td>
+              <td><%= link_to "Show Orders", product_route_path(p.id) %></td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

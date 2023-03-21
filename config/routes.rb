@@ -28,6 +28,23 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :users
+  resources :product_routes do
+    resources :order_routes
+  end
+  root "product_routes#index"
+
+  namespace :business do
+    resources :customer_routes, only: [ :index, :new, :create, :edit, :update ]
+    get '/preview', to: "customer_routes#preview"
+    delete '/delete/:id', to: "customer_routes#delete_customer"
+    get '/search', to: "customer_routes#search", as: "search"
+  end
+
+  namespace :api do
+    resources :v1 
+  end
+
+  #root "students#index"
   resources :students
   resources :faculties
   resources :books

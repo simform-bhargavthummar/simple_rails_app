@@ -1,0 +1,31 @@
+<%= form_with model: @customers do |form| %>
+  <div class="container">
+    <h1 class="text-center">Add Customers</h1>
+    <div class="row">  
+    	<div class="col-4">
+				<%= form.label :name %><br>
+				<%= form.text_field :name, class: "form-control" %>
+			</div>
+		</div><br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :contact %><br>
+				<%= form.text_field :contact, class: "form-control" %>
+			</div>
+		</div> <br/>
+
+		<div class="row">
+			<div class="col-4">
+				<%= form.label :email %><br>
+				<%= form.email_field :email, class: "form-control" %>
+			</div>
+		</div> <br/>
+		
+		<div>
+			<%= form.submit "Insert data", class: "btn btn-primary" %>   
+    </div>
+        
+</div>
+
+<% end %>
