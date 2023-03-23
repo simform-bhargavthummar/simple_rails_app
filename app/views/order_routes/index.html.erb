@@ -17,14 +17,14 @@
         </thead>
 
         <tbody>
-          <% @orders.each do |o| %>
+          <% @orders.each do |order| %>
             <tr>
-              <td> <%= o.id %> </td>
-              <td> <%= o.quantity %> </td>
-              <td> <%= o.total %> </td>
-              <td> <%= o.product_routes.title %> </td>
-              <td> <%= link_to "Edit", edit_order_path(o.id), class: "btn btn-primary" %> </td>
-              <td> <%= link_to "Delete", order_path(o.id),
+              <td> <%= order.id %> </td>
+              <td> <%= order.quantity %> </td>
+              <td> <%= order.total %> </td>
+              <td> <%= order.product_routes.title %> </td>
+              <td> <%= link_to "Edit", edit_order_path(order.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", order_path(order.id),
                                data: { turbo_method: :delete,
                                        turbo_confirm: "Confirmation for delete the order" },
                                class: "btn btn-primary" %> </td>

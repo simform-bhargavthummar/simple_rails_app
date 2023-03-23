@@ -1,7 +1,8 @@
-<%= form_with model: @customers do |form| %>
+<%= form_with model: @customer do |form| %>
   <div class="container">
     <h1 class="text-center">Add Customers</h1>
     <div class="row">  
+      <%= display_errors(@customer) %>
       <div class="col-4">
         <%= form.label :name %><br>
         <%= form.text_field :name, class: "form-control" %>

@@ -6,20 +6,20 @@ class OrderRoutesController < ApplicationController
   end
 
   def new
-    @orders = @product.order_routes.new
+    @order = @product.order_routes.new
   end
 
   def create
-    price = ProductRoute.find(params[:product_route_id]).price
-    @orders = 
+    get_price
+    @order = 
       @product
         .order_routes
         .new(
           quantity: order_param[:quantity],
-          total: price*order_param[:quantity].to_i,
+          total: @price*order_param[:quantity].to_i,
           product_route_id: order_param[:product_route_id]
         )  
-    if @orders.save
+    if @order.save
       redirect_to product_routes_path
     else
       render :new, status: :unprocessable_entity
@@ -28,21 +28,21 @@ class OrderRoutesController < ApplicationController
 
   def edit
     @product = ProductRoute.find(params[:product_route_id])
-    @orders = @product.order_routes.find(params[:id])
+    @order = @product.order_routes.find(params[:id])
   end 
 
   def update
     
-    price = ProductRoute.find(params[:product_route_id]).price
-    @orders = 
+    get_price
+    @order = 
       OrderRoute
       .find(params[:id])
       .update( 
         quantity: order_param[:quantity],
-        total: price*order_param[:quantity].to_i,
+        total: @price*order_param[:quantity].to_i,
         product_route_id: params[:product_route_id]
         ) 
-    if @orders
+    if @order
       redirect_to product_route_path(params[:product_route_id])
     else
       render :edit, status: :unprocessable_entity
@@ -50,8 +50,8 @@ class OrderRoutesController < ApplicationController
   end
 
   def destroy
-    @orders = OrderRoute.find(params[:id])
-    @orders.destroy
+    @order = OrderRoute.find(params[:id])
+    @order.destroy
     redirect_to product_route_path(params[:product_route_id])
   end
 
@@ -66,5 +66,9 @@ class OrderRoutesController < ApplicationController
 
     def set_product_object
       @product = ProductRoute.find(params[:product_route_id])
+    end
+
+    def get_price
+      @price = ProductRoute.find(params[:product_route_id]).price
     end
 end

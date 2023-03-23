@@ -1,8 +1,8 @@
-<%= form_with(model: @orders, url: product_route_order_route_path() ) do |form| %>
+<%= form_with(model: @order, url: product_route_order_route_path ) do |form| %>
   <div class="container">
     <h1 class="text-center">Update Orders</h1>
-
     <div class="row">  
+      <%= display_errors(@order) %>
       <div class="col-4">
         <%= form.label :quantity %><br>
         <%= form.text_field :quantity, class: "form-control" %>

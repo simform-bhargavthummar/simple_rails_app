@@ -1,13 +1,11 @@
-<%= form_with model: @products do |form| %>
+<%= form_with model: @product do |form| %>
   <div class="container">
     <h1 class="text-center">Update Products</h1>
     <div class="row">  
+      <%= display_errors(@product) %>
       <div class="col-4">
         <%= form.label :title %><br>
         <%= form.text_field :title, class: "form-control" %>
-        <% @products.errors.full_messages_for(:title).each do |message| %>
-          <p class="text-danger"> <%= message %></p>
-        <% end %>
       </div>
     </div><br/>
 
@@ -15,9 +13,6 @@
       <div class="col-4">
         <%= form.label :price %><br>
         <%= form.text_field :price, class: "form-control" %>
-        <% @products.errors.full_messages_for(:price).each do |message| %>
-            <p class="text-danger"> <%= message %></p>
-        <% end %>
       </div>
     </div> <br/>
 
@@ -25,9 +20,6 @@
       <div class="col-4">
         <%= form.label :company_name %><br>
         <%= form.text_field :company_name, class: "form-control" %>
-        <% @products.errors.full_messages_for(:company_name).each do |message| %>
-            <p class="text-danger"> <%= message %></p>
-        <% end %>
       </div>
     </div> <br/>
     
