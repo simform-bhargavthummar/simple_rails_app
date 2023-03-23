@@ -136,39 +136,6 @@
     </div>
     
     <div class="col">
-     <br/><h3 class="text-center"> List of employee who created before today</h3>
-      <table class="table table-striped">
-        <thead>
-          <tr>  
-            <th scope="col"> Id </th>
-            <th scope="col"> First name </th>
-            <th scope="col"> Last Name </th>
-            <th scope="col"> Email </th>
-            <th scope="col"> Age </th>
-            <th scope="col"> Total Orders </th>
-            <th scope="col"> Time Availability </th>
-            <th scope="col"> Salary </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @que[3].each do |e| %>
-            <tr>
-              <td> <%= e.id %> </td>
-              <td> <%= e.first_name %> </td>
-              <td> <%= e.last_name %> </td>
-              <td> <%= e.email %> </td>
-              <td> <%= e.age %> </td>
-              <td> <%= e.no_of_order %> </td>
-              <td> <%= e.full_time_available %> </td>
-              <td> <%= e.salary %> </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="col">
      <br/><h3 class="text-center"> List of employee who has age more then 25 or order is 5</h3>
       <table class="table table-striped">
         <thead>

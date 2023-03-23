@@ -20,22 +20,29 @@
           </thead>
 
           <tbody>
-            <% @employee.each do |e| %>
+            <% @employees.each do |employee| %>
               <tr>
-                <td> <%= e.id %> </td>
-                <td> <%= e.first_name %> </td>
-                <td> <%= e.last_name %> </td>
-                <td> <%= e.email %> </td>
-                <td> <%= e.age %> </td>
-                <td> <%= e.no_of_order %> </td>
-                <td> <%= e.full_time_available %> </td>
-                <td> <%= e.salary %> </td>
-                <td> <%= link_to "Update Record", edit_employee_path(e.id), class: "btn btn-primary" %> </td>
-                <td> <%= link_to "Delete Record", employee_path(e.id), data: {
-                                                                         turbo_method: :delete,
-                                                                         turbo_confirm: "Confirmation for delete the Employee",
-                                                                       },
-                                                                       class: "btn btn-primary" %> </td>
+                <td> <%= employee.id %> </td>
+                <td> <%= employee.first_name %> </td>
+                <td> <%= employee.last_name %> </td>
+                <td> <%= employee.email %> </td>
+                <td> <%= employee.age %> </td>
+                <td> <%= employee.no_of_order %> </td>
+                <td> <%= employee.full_time_available %> </td>
+                <td> <%= employee.salary %> </td>
+                <td> <%= link_to "Update Record", 
+                  edit_employee_path(employee.id), 
+                  class: "btn btn-primary" %> 
+                </td>
+
+                <td> <%= link_to "Delete Record", 
+                  employee_path(employee.id), 
+                  data: { 
+                    turbo_method: :delete,
+                    turbo_confirm: "Confirmation for delete the Employee"
+                        },
+                  class: "btn btn-primary" %> 
+                </td>
               </tr>
             <% end %>
           </tbody>
@@ -47,15 +54,12 @@
       <%= form.label :email %> &nbsp; &nbsp;
       <%= form.text_field :email %> &nbsp; &nbsp;
       <%= form.submit "Find" %><br/> 
-			
       <% flash.each do |type, msg| %>
-        <div>
-          <%= msg %>
-        </div>
-        <% end %>
-        <br><br>
-        <%= link_to "Increse one order", update_order_path, class: "btn btn-primary" %> &nbsp; &nbsp;
-        <%= link_to "Remove one order", decrese_order_path, class: "btn btn-primary" %>
+        <div> <%= msg %> </div>
+      <% end %>
+      <br><br>
+      <%= link_to "Increse one order", update_order_path, class: "btn btn-primary" %> &nbsp; &nbsp;
+      <%= link_to "Remove one order", decrese_order_path, class: "btn btn-primary" %>
     <% end %>  
   </div>
 </div>
