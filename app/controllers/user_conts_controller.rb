@@ -23,6 +23,7 @@ class UserContsController < ApplicationController
       redirect_to cars_path, notice: "Login sucessfully..."
     else
       flash[:notice] = "Invalid login...."
+      redirect_to cars_path
     end
   end
   

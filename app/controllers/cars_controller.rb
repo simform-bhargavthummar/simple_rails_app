@@ -68,6 +68,4 @@ class CarsController < ApplicationController
     def get_id
       @car = Car.find(params[:id])
     end
-
-
 end
