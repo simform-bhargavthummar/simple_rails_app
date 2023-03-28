@@ -8,7 +8,7 @@
     <%= link_to 'refresh', class: "btn btn-primary" %><br><br>
 
     <%= form.label 'Status' %>
-    <%= form.select :status, @status %>
+    <%= form.select :status, order_statuses %>
     <%= form.submit 'Filter', class: "btn btn-primary" %>
   <% end %>
 

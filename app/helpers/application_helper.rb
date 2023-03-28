@@ -10,4 +10,8 @@ module ApplicationHelper
       end
     end
   end
+  
+  def order_statuses
+    Order.statuses.keys
+  end
 end

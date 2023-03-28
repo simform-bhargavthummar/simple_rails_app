@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   def index
-    @status = Order.statuses.keys
     status_data = Order.where(status: params[:status])
     if params[:title].blank? && status_data.nil?
        @orders = Order.includes(:customer, :query_product).all
