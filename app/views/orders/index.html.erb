@@ -15,18 +15,18 @@
   <div class="row justify-content-md-center"> 
     <div class="col">
     <h1>Orders</h1>
-		<%= link_to "Add Orders", new_order_path %><br>
+    <%= link_to "Add Orders", new_order_path %><br>
     
       <table class="table table-striped">
         <thead>
           <tr> 
             <th scope="col"> Id </th>
-						<th scope="col"> Quantity </th>
-						<th scope="col"> Total Price </th>
-						<th scope="col"> Customer </th>
-						<th scope="col"> Product </th>
-						<th scope="col"> Status </th>
-						<th scope="col" colspan= 2 > Action </th>            
+            <th scope="col"> Quantity </th>
+            <th scope="col"> Total Price </th>
+            <th scope="col"> Customer </th>
+            <th scope="col"> Product </th>
+            <th scope="col"> Status </th>
+            <th scope="col" colspan= 2 > Action </th>            
           </tr>
         </thead>
 
@@ -38,7 +38,7 @@
               <td> <%= o.total_price %> </td>
               <td> <%= o.customer.first_name %> </td>
               <td> <%= o.query_product&.title %> </td>
-							<td> <%= o.status %> </td>
+              <td> <%= o.status %> </td>
               <td> <%= link_to "Edit", edit_order_path(o.id), class: "btn btn-primary" %> </td>
               <td> <%= link_to "Delete", order_path(o.id),
                                data: { turbo_method: :delete,

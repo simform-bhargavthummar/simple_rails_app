@@ -23,12 +23,12 @@ class QueryProductsController < ApplicationController
   end
 
   def edit
-    @query_product = QueryProduct.find(params[:id])
+    get_query_product
     @status = QueryProduct.statuses.keys 
   end
 
   def update
-    @query_product = QueryProduct.find(params[:id])
+    get_query_product
     if @query_product.update(qp_param)
       redirect_to query_products_path
     else
@@ -37,7 +37,7 @@ class QueryProductsController < ApplicationController
   end
 
   def destroy
-    @query_product = QueryProduct.find(params[:id])
+    get_query_product
     @query_product.destroy
     redirect_to query_products_path
   end
@@ -53,5 +53,9 @@ class QueryProductsController < ApplicationController
   private
     def qp_param
       params.require(:query_product).permit(:title, :description, :price, :capacity, :is_active, :status)
+    end
+
+    def get_query_product
+      @query_product = QueryProduct.find(params[:id])
     end
 end                                

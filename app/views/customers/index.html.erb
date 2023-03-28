@@ -9,11 +9,11 @@
         <thead>
           <tr> 
               <th scope="col"> Id </th>
-							<th scope="col"> First name </th>
-							<th scope="col"> Last Name </th>
-							<th scope="col"> Email </th>
-            	<th scope="col"> Phone Number </th>							
-							<th scope="col" colspan= 2 > Action </th>            
+              <th scope="col"> First name </th>
+              <th scope="col"> Last Name </th>
+              <th scope="col"> Email </th>
+              <th scope="col"> Phone Number </th>							
+              <th scope="col" colspan= 2 > Action </th>            
           </tr>
         </thead>
 
@@ -28,7 +28,7 @@
               <td> <%= link_to "Edit", edit_customer_path(c.id), class: "btn btn-primary" %> </td>
               <td> <%= link_to "Delete", customer_path(c.id),
                                data: { turbo_method: :delete,
-                                       turbo_confirm: 'Confirmation for delete the faculty' },
+                                       turbo_confirm: 'Confirmation for delete' },
                                class: "btn btn-primary" %> </td>
               
             </tr>

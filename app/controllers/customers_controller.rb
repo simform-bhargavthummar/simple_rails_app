@@ -26,11 +26,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    find_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    find_customer
     if @customer.update(customer_param)
       redirect_to customers_path
     else
@@ -39,7 +39,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
+    find_customer
     @customer.destroy
     redirect_to customers_path
   end
@@ -47,6 +47,10 @@ class CustomersController < ApplicationController
   private
     def customer_param
       params.require(:customer).permit(:first_name, :last_name, :email, :phone_number)
+    end
+
+    def find_customer
+      @customer = Customer.find(params[:id])
     end
 
     def set_query
