@@ -1,15 +1,15 @@
 class QueryProductsController < ApplicationController
   def index
-    @query_product = QueryProduct.all
+    @query_products = QueryProduct.all
   end
 
   def all_products
-    @query_product = QueryProduct.unscoped
+    @query_products = QueryProduct.unscoped
   end
 
   def new
     @query_product = QueryProduct.new
-    @status = QueryProduct.statuses.keys 
+     
     #if i write keys then only i can access it and it will process by default and convert string to int.
   end
 

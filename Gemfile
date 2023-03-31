@@ -73,4 +73,6 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'sass-rails'
+
 gem "pry", "~> 0.14.2"

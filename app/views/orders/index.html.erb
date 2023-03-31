@@ -31,16 +31,16 @@
         </thead>
 
         <tbody>
-          <% @orders.each do |o| %>
+          <% @orders.each do |order| %>
             <tr>
-              <td> <%= o.id %> </td>
-              <td> <%= o.quantity %> </td>
-              <td> <%= o.total_price %> </td>
-              <td> <%= o.customer.first_name %> </td>
-              <td> <%= o.query_product&.title %> </td>
-              <td> <%= o.status %> </td>
-              <td> <%= link_to "Edit", edit_order_path(o.id), class: "btn btn-primary" %> </td>
-              <td> <%= link_to "Delete", order_path(o.id),
+              <td> <%= order.id %> </td>
+              <td> <%= order.quantity %> </td>
+              <td> <%= order.total_price %> </td>
+              <td> <%= order.customer.first_name %> </td>
+              <td> <%= order.query_product&.title %> </td>
+              <td> <%= order.status %> </td>
+              <td> <%= link_to "Edit", edit_order_path(order.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", order_path(order.id),
                                data: { turbo_method: :delete,
                                        turbo_confirm: "Confirmation for delete the order" },
                                class: "btn btn-primary" %> </td>

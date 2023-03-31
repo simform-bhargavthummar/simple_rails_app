@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/enrol', to: "enrols#create_enrol"
   post '/enrol', to: "users#index"
   post 'users/filter', to: "users#event_filter"
-  root "customers#root"
+  #root "customers#root"
   get '/query', to: "customers#query"
   get '/manual_active', to: "query_products#all_products"
   post 'orders/find_product', to: "orders#find_product"

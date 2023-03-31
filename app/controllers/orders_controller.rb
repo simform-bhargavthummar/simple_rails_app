@@ -5,11 +5,11 @@ class OrdersController < ApplicationController
     if params[:title].blank? && status_data.nil?
        @orders = Order.includes(:customer, :query_product).all
     else
-      demo = QueryProduct.find_by_title(params[:title])
-      if demo == nil
+      find_product_title = QueryProduct.find_by_title(params[:title])
+      if find_product_title == nil
         @orders = Order.all
       else
-        @orders = demo.orders.where(status: params[:status])
+        @orders = find_product_title.orders.where(status: params[:status])
       end
    
     end
@@ -17,11 +17,11 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-  find_for_select
+    find_for_select
   end
 
   def create
-  add_order
+    add_order
     if @order.save
       redirect_to orders_path
     else
@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    #binding.pry
     @order = Order.find(params[:id])
     find_for_select
   end
@@ -75,7 +74,6 @@ class OrdersController < ApplicationController
     end
 
     def find_for_select
-      @status = Order.statuses.keys
       @product = QueryProduct.distinct.pluck(:title, :id)
       @customer = Customer.distinct.pluck(:first_name, :id)
     end

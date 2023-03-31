@@ -14,14 +14,12 @@
             <th scope="col"> Price </th>
             <th scope="col"> Capacity </th>  
             <th scope="col"> Active </th>
-            <th scope="col"> Status </th>
-          
-                        
+            <th scope="col"> Status </th>              
           </tr>
         </thead>
 
         <tbody>
-          <% @query_product.each do |q| %>
+          <% @query_products.each do |q| %>
             <tr>
               <td> <%= q.id %> </td>
               <td> <%= q.title %> </td>
@@ -29,8 +27,7 @@
               <td> <%= q.price %> </td>
               <td> <%= q.capacity %> </td>
               <td> <%= q.is_active %> </td>
-              <td> <%= q.status %> </td>
-              
+              <td> <%= q.status %> </td> 
             </tr>
           <% end %>
         </tbody>
