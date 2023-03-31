@@ -1,0 +1,7 @@
+<%= turbo_stream.append "display_comments" do %>
+  <%= turbo_frame_tag "turbo_post_comments_#{@comment.id}" do %>
+    <div>
+      <%= @comment.comment %><br>
+    </div>  
+  <% end %>
+<% end %>

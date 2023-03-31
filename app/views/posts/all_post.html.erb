@@ -1,0 +1,33 @@
+<div class="container text-center">
+  <%= link_to "Back", posts_path %><br>
+  <h1> All Posts </h1>  
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-body">
+          <div class="row ">
+            <div class="col-sm-3">  
+              <%= post.title %>
+            </div>
+
+            <div class="col-sm-2"> 
+              <%= post.body %>
+            </div>
+
+            <div class="col-sm-2"> 
+              <%= turbo_frame_tag "turbo_post_comments_#{post.id}" do %>
+                <%= link_to " All Comments", comment_path(post.id) %>
+              <% end %>
+            </div>
+
+            <div class="col-sm-2"> 
+              <%= link_to "Like", like_path(post) %> 
+            </div>
+
+            <div class="col-sm-2"> 
+              <%= link_to "Dislike", dislike_path(post) %> <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %> 
+</div>

@@ -1,0 +1,17 @@
+<div class="container text-center">
+  <div class="card">
+    <div class="card-body">
+      <%= form_with model: @post do |form| %>
+        <%= form.label :title %>
+        <%= form.text_field :title %> <br><br>
+
+        <%= form.label :body %>
+        <%= form.text_field :body %> <br><br>
+        
+        <%= form.hidden_field :post_user_id, value: @current_user.id %>
+        <%= form.submit %><br>
+        <%= link_to 'Back', posts_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

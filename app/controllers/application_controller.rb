@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= UserCont.find(session[:user_id]) if session[:user_id]
   end
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

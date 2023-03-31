@@ -1,0 +1,5 @@
+// step-1  command: bin/importmap pin bootstrap
+// step-2  In app/js/app.js => import "bootstrap"
+// step-3  Add gem in gemfile and bundle install
+// step-4  In assets/stylesheet rename app.css to app.scss and in that write @import 'bootstrap';
+

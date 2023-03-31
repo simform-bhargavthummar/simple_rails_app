@@ -53,6 +53,20 @@ Rails.application.routes.draw do
   get '/search_employee', to: 'employee_forms#search', as: "search_employee"
   resources :employee_forms
   
+  get '/login', to: 'post_users#check_login'
+  post '/login', to: 'post_users#login'
+  get '/logout', to: 'post_users#logout'
+  get '/all_post', to: 'posts#all_post'
+  get '/all_comments', to: 'post_comments#all_comments'
+  get '/post/:id/like', to: 'posts#like_post', as: 'like'
+  get '/post/:id/dislike', to: 'posts#dislike_post', as: 'dislike'
+  get '/post_comments/:id', to: 'post_comments#post_comments', as: "comment"
+  root 'post_users#check_login'
+  resources :post_users
+  resources :posts do
+    resources :post_comments
+  end
+  resources :post_likes
   resources :students
   resources :faculties
   resources :books

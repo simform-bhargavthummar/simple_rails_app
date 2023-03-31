@@ -1,0 +1,11 @@
+<div align='center'>
+  <%= link_to "Back", post_post_comments_path %> 
+  <%= turbo_frame_tag "turbo_new_comment_#{params[:post_id]}" do %>
+    <%= form_with model: @comment, url: post_post_comments_path(params[:post_id]), method: :post do |form| %>
+      <%= form.label :comment %> &nbsp;
+      <%= form.text_field :comment %> &nbsp;
+      <%= form.hidden_field :post_id, value: params[:post_id] %>
+      <%= form.submit %>
+    <% end %>
+  <% end %>
+</div>
