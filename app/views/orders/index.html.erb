@@ -1,0 +1,55 @@
+
+<br><br>
+<div class="container text-center">
+  <%= form_with(url: orders_path, method: :get) do |form|%>
+    <%= form.label 'Product Name'  %>
+    <%= form.text_field :title %>
+    <%= form.submit 'Search', class: "btn btn-primary" %>
+    <%= link_to 'refresh', class: "btn btn-primary" %><br><br>
+
+    <%= form.label 'Status' %>
+    <%= form.select :status, order_statuses %>
+    <%= form.submit 'Filter', class: "btn btn-primary" %>
+  <% end %>
+
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Orders</h1>
+    <%= link_to "Add Orders", new_order_path %><br>
+    
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Id </th>
+            <th scope="col"> Quantity </th>
+            <th scope="col"> Total Price </th>
+            <th scope="col"> Customer </th>
+            <th scope="col"> Product </th>
+            <th scope="col"> Status </th>
+            <th scope="col" colspan= 2 > Action </th>            
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td> <%= order.id %> </td>
+              <td> <%= order.quantity %> </td>
+              <td> <%= order.total_price %> </td>
+              <td> <%= order.customer.first_name %> </td>
+              <td> <%= order.query_product&.title %> </td>
+              <td> <%= order.status %> </td>
+              <td> <%= link_to "Edit", edit_order_path(order.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", order_path(order.id),
+                               data: { turbo_method: :delete,
+                                       turbo_confirm: "Confirmation for delete the order" },
+                               class: "btn btn-primary" %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

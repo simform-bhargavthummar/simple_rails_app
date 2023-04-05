@@ -1,10 +1,23 @@
-<h2 class="text-center"> List of Employees </h2>
+<h2 class="text-center"> List of Employees </h2> <br>
 
 <div class="container text-center">
   <div class="row justify-content-md-center">
-    <%= link_to "Add Employees", new_employee_path %>
-    <%= link_to "Other Operations", others_path %>
-      <div class="col">
+      <div class="row">
+        <div class="col">
+          <%= link_to "Product Page", query_products_path %>
+        </div>
+        <div class="col">
+          <%= link_to "Order page", orders_path %>
+        </div>
+        <div class="col">
+          <%= link_to "Add Employees", new_employee_path %>
+        </div>
+        <div class="col">
+           <%= link_to "Other Operations", others_path %>
+        </div>
+      </div> 
+   
+      <div class="col"><br>
         <table class="table table-striped">          
           <thead>
             <tr>  

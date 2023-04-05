@@ -1,0 +1,50 @@
+
+<div class="container text-center">
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Products</h1>
+    <%= link_to 'Add Product', new_query_product_path %> <br>
+    <%= link_to 'All Product', manual_active_path %>
+     
+
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Id </th> 
+            <th scope="col"> Title </th>
+            <th scope="col"> Description </th>
+            <th scope="col"> Price </th>
+            <th scope="col"> Capacity </th>  
+            <th scope="col"> Active </th>
+            <th scope="col"> Status </th>
+            <th scope="col" colspan= 2 > Action </th>
+                        
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @query_products.each do |q| %>
+            <tr>
+              <td> <%= q.id %> </td>
+              <td> <%= q.title %> </td>
+              <td> <%= q.description %> </td>
+              <td> <%= q.price %> </td>
+              <td> <%= q.capacity %> </td>
+              <td> <%= q.is_active %> </td>
+              <td> <%= q.status %> </td>
+              <td> <%= link_to 'View all orders', query_product_path(q.id) %> <td>
+              <td> <%= link_to "Edit", edit_query_product_path(q.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", query_product_path(q.id),
+                               data: { turbo_method: :delete,
+                                       turbo_confirm: 'Confirmation for delete the product' },
+                               class: "btn btn-primary" %> </td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

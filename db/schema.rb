@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_042158) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "address_forms", force: :cascade do |t|
+    t.string "house_name"
+    t.string "street_name"
+    t.string "road"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "employee_form_id"
+    t.index ["employee_form_id"], name: "index_address_forms_on_employee_form_id"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "address"
@@ -21,6 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
+  create_table "api_v1s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "authors", force: :cascade do |t|
@@ -47,6 +62,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "business_customer_routes", force: :cascade do |t|
+    t.string "name"
+    t.string "contact"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.integer "price"
+    t.integer "average"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
     t.datetime "created_at", null: false
@@ -57,13 +89,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "events_id"
-    t.bigint "users_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
+    t.bigint "event_id"
+    t.bigint "user_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
-    t.index ["events_id"], name: "index_comments_on_events_id"
-    t.index ["users_id"], name: "index_comments_on_users_id"
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -73,6 +105,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "employee_forms", force: :cascade do |t|
+    t.string "employee_name"
+    t.string "email"
+    t.string "password"
+    t.string "gender"
+    t.string "address"
+    t.string "mobile_number"
+    t.date "birth_date"
+    t.string "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "hobbies", default: [], array: true
   end
 
   create_table "employees", force: :cascade do |t|
@@ -129,6 +175,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
+  create_table "order_layouts", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_layout_id"
+    t.index ["product_layout_id"], name: "index_order_layouts_on_product_layout_id"
+  end
+
+  create_table "order_routes", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_route_id"
+    t.index ["product_route_id"], name: "index_order_routes_on_product_route_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_price"
@@ -139,6 +203,56 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.bigint "query_product_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["query_product_id"], name: "index_orders_on_query_product_id"
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_post_comments_on_post_id"
+  end
+
+  create_table "post_likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_user_id"
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_post_likes_on_post_id"
+    t.index ["post_user_id"], name: "index_post_likes_on_post_user_id"
+  end
+
+  create_table "post_users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_user_id"
+    t.index ["post_user_id"], name: "index_posts_on_post_user_id"
+  end
+
+  create_table "product_layouts", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_routes", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.string "company_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -172,6 +286,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.boolean "terms_con"
   end
 
+  create_table "user_conts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_layouts", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role"
+    t.index ["email"], name: "index_user_layouts_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_user_layouts_on_reset_password_token", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -179,13 +314,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_041443) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "address_forms", "employee_forms"
   add_foreign_key "books", "authors"
-  add_foreign_key "comments", "events", column: "events_id"
-  add_foreign_key "comments", "users", column: "users_id"
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
   add_foreign_key "enrols", "events"
   add_foreign_key "enrols", "users"
   add_foreign_key "events", "categories"
   add_foreign_key "events", "users"
+  add_foreign_key "order_layouts", "product_layouts"
+  add_foreign_key "order_routes", "product_routes"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "query_products"
+  add_foreign_key "post_comments", "posts"
+  add_foreign_key "post_likes", "post_users"
+  add_foreign_key "post_likes", "posts"
+  add_foreign_key "posts", "post_users"
 end

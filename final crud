@@ -92,4 +92,5 @@ Student.create(first_name: "Sasuke", last_name: "Uchiha", dob: "10-02-2006", dep
 Faculty.create(first_name: "Kakashi", last_name: "Hatake", dob: "22-11-1990", phone_number: 8547595645, email: "hatake99@gmail.com", designation: "Prof.")
 Faculty.create(first_name: "Iruka", last_name: "kaison", dob: "12-05-1992", phone_number: 9512478953, email: "kaisoni33@gmail.com@gmail.com", designation: "Ass. Prof.")
 
-
+#que-9 (Advanced query Record)
+Customer.joins(:orders).group(:first_name).order("sum(orders.quantity) DESC").limit(3)

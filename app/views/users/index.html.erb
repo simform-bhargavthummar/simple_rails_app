@@ -1,0 +1,63 @@
+
+<div class="text-center">
+  <h3>Welcome</h3>  <%= @u.email %>
+ 
+  <div class="container">
+    <div class="row">
+
+      <div class="col">
+          <%= link_to "Create Event", new_event_path %>
+      </div>
+      <div class="col">
+          <%= link_to "Profile", user_path(session[:user_id]) %>
+      </div>
+      <div class="col">
+          <%= link_to "Logout", logout_path %>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+<div class="container text-center">
+  
+  <%= form_with(url: "users/filter") do |form| %>
+    <%= form.label "Event Category", :category_name %>
+    <%= form.select :category_id, @x %>&nbsp;
+    <%= form.submit "filter", class: "btn btn-primary" %> &nbsp; &nbsp;
+    <%= link_to 'Refresh', users_path ,class: "btn btn-primary" %>
+
+  <% end %>
+  
+  <div class="row justify-content-md-center"> 
+
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>  
+            <th scope="col"> Event Name </th>
+            <th scope="col"> Description </th>
+            <th scope="col"> Event date </th>
+            <th scope="col"> Participate </th>  
+            <th scope="col" colspan = 2> Comment </th>  
+               
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @event.each do |e| %>
+            <tr>
+              <td> <%= e.name %> </td>
+              <td> <%= e.description %> </td>
+              <td> <%= e.event_date %> </td>
+              <td> <%= link_to "Enroll", enrol_path(event_id: e.id) %> </td>
+              <td> <%= link_to 'Show Comment', comment_path(e.id), class:"btn btn-primary" %> </td>
+              <td> <%= link_to 'Give Comment', new_comment_path(event_id: e.id), class:"btn btn-primary" %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
