@@ -5,19 +5,20 @@ Rails.application.routes.draw do
   #root "user_conts#check_login"
   #root "product_routes#index"
   #root to: "product_layouts#index"
-  root 'employee_forms#index'
+  #root 'employee_forms#index'
+  #root 'post_users#check_login'
+  root 'user_mails#index'
   get '/others', to: "employees#other_operations"
   post '/find_email', to: "employees#find_email"
   get '/update_order', to: "employees#update_order"
   get '/decrese_order', to: "employees#change_order"
-
   get '/sign_in', to: "sessions#new"
   post '/sign_in', to: "sessions#create"
   get '/logout', to: "sessions#logout"
   get '/enrol', to: "enrols#create_enrol"
   post '/enrol', to: "users#index"
   post 'users/filter', to: "users#event_filter"
- 
+
   get '/query', to: "customers#query"
   get '/manual_active', to: "query_products#all_products"
   post 'orders/find_product', to: "orders#find_product"
@@ -61,7 +62,6 @@ Rails.application.routes.draw do
   get '/post/:id/like', to: 'posts#like_post', as: 'like'
   get '/post/:id/dislike', to: 'posts#dislike_post', as: 'dislike'
   get '/post_comments/:id', to: 'post_comments#post_comments', as: "comment"
-  root 'post_users#check_login'
   resources :post_users
   resources :posts do
     resources :post_comments
@@ -79,5 +79,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :cars
   resources :user_conts
+  resources :user_mails
 
 end

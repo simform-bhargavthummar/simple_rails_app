@@ -79,3 +79,7 @@ gem "pry", "~> 0.14.2"
 gem "prawn"
 gem 'devise'
 gem "bootstrap"
+
+gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
+
+gem 'mail_form'
