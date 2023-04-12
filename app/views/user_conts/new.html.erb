@@ -1,0 +1,18 @@
+<div align="center">
+  <h2> Add User </h2>
+  <%= form_with model: @user do |form| %>
+    <%= form.label 'Name' %>
+    <%= form.text_field :name %><br>
+    <%= custom_error(@user, :name) %><br>
+
+    <%= form.label 'Email' %>
+    <%= form.email_field :email %><br>
+    <%= custom_error(@user, :email) %><br>
+
+    <%= form.label 'Password' %>
+    <%= form.password_field :password %> <br>
+    <%= custom_error(@user, :password) %><br>
+
+    <%= form.submit 'Add User' %>
+  <% end %>
+</div>
