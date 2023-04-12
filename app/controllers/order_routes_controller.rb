@@ -27,22 +27,18 @@ class OrderRoutesController < ApplicationController
   end
 
   def edit
-    @product = ProductRoute.find(params[:product_route_id])
-    @order = @product.order_routes.find(params[:id])
+    set_product_object
+    get_order
   end 
 
   def update
-    
     get_price
-    @order = 
-      OrderRoute
-      .find(params[:id])
-      .update( 
-        quantity: order_param[:quantity],
-        total: @price*order_param[:quantity].to_i,
-        product_route_id: params[:product_route_id]
-        ) 
-    if @order
+    get_order
+    if @order.update( 
+      quantity: order_param[:quantity],
+      total: @price*order_param[:quantity].to_i,
+      product_route_id: params[:product_route_id]
+      ) 
       redirect_to product_route_path(params[:product_route_id])
     else
       render :edit, status: :unprocessable_entity
@@ -50,7 +46,7 @@ class OrderRoutesController < ApplicationController
   end
 
   def destroy
-    @order = OrderRoute.find(params[:id])
+    get_order
     @order.destroy
     redirect_to product_route_path(params[:product_route_id])
   end
@@ -70,5 +66,9 @@ class OrderRoutesController < ApplicationController
 
     def get_price
       @price = ProductRoute.find(params[:product_route_id]).price
+    end
+
+    def get_order
+      @order = OrderRoute.find(params[:id])
     end
 end

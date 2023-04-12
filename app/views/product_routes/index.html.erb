@@ -18,19 +18,19 @@
         </thead>
 
         <tbody>
-          <% @products.each do |p| %>
+          <% @products.each do |product| %>
             <tr>
-              <td> <%= p.id %> </td>
-              <td> <%= p.title %> </td>
-              <td> <%= p.price %> </td>
-              <td> <%= p.company_name %> </td>
-              <td> <%= link_to "Edit", edit_product_route_path(p.id), class: "btn btn-primary" %> </td>
-              <td> <%= link_to "Delete", product_route_path(p.id),
+              <td> <%= product.id %> </td>
+              <td> <%= product.title %> </td>
+              <td> <%= product.price %> </td>
+              <td> <%= product.company_name %> </td>
+              <td> <%= link_to "Edit", edit_product_route_path(product.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", product_route_path(product.id),
                                data: { turbo_method: :delete,
                                        turbo_confirm: "Confirmation for delete the product" },
                                class: "btn btn-primary" %> </td>
-              <td><%= link_to "Add Orders", new_product_route_order_route_path(p.id) %></td>
-              <td><%= link_to "Show Orders", product_route_path(p.id) %></td>
+              <td><%= link_to "Add Orders", new_product_route_order_route_path(product.id) %></td>
+              <td><%= link_to "Show Orders", product_route_path(product.id) %></td>
               
             </tr>
           <% end %>

@@ -2,10 +2,11 @@
   <div class="container">
     <h1 class="text-center">Add Customers</h1>
     <div class="row">  
-      <%= display_errors(@customer) %>
+      
       <div class="col-4">
         <%= form.label :name %><br>
         <%= form.text_field :name, class: "form-control" %>
+        <%= custom_error(@customer, :name)%>
       </div>
     </div><br/>
 
@@ -13,6 +14,7 @@
       <div class="col-4">
         <%= form.label :contact %><br>
         <%= form.text_field :contact, class: "form-control" %>
+        <%= custom_error(@customer, :contact)%>
       </div>
     </div> <br/>
 
@@ -20,6 +22,7 @@
       <div class="col-4">
         <%= form.label :email %><br>
         <%= form.email_field :email, class: "form-control" %>
+        <%= custom_error(@customer, :email)%>
       </div>
     </div> <br/>
     

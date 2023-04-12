@@ -17,11 +17,11 @@ class ProductRoutesController < ApplicationController
   end
 
   def edit
-    @product = ProductRoute.find(params[:id])
+    find_product
   end
 
   def update
-    @product = ProductRoute.find(params[:id])
+    find_product
     if @product.update(qp_param)
       redirect_to product_routes_path
     else
@@ -30,19 +30,23 @@ class ProductRoutesController < ApplicationController
   end
 
   def destroy
-    @product = ProductRoute.find(params[:id])
+    find_product
     @product.destroy
     redirect_to product_routes_path
   end
 
   def show
     @orders = ProductRoute.find(params[:id]).order_routes
-    @product = ProductRoute.find(params[:id])
+    find_product
   end
 
   private
     def qp_param
       params.require(:product_route).permit(:title, :price, :company_name)
+    end
+     
+    def find_product
+      @product = ProductRoute.find(params[:id])
     end
 
 end

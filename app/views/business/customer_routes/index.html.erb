@@ -18,17 +18,17 @@
         </thead>
 
         <tbody>
-          <% @customers.each do |c| %>
+          <% @customers.each do |customer| %>
             <tr>
-              <td> <%= c.id %> </td>
-              <td> <%= c.name %> </td>
-              <td> <%= c.contact %> </td>
-              <td> <%= c.email %> </td>
+              <td> <%= customer.id %> </td>
+              <td> <%= customer.name %> </td>
+              <td> <%= customer.contact %> </td>
+              <td> <%= customer.email %> </td>
               <td> <%= link_to "Edit", 
-                  edit_business_customer_route_path(c.id), 
+                  edit_business_customer_route_path(customer.id), 
                   class: "btn btn-primary" %> </td>
               <td> <%= link_to "Delete", 
-                business_path(c.id), 
+                business_path(customer.id), 
                 data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure to delete customer?"

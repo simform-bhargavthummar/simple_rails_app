@@ -21,8 +21,8 @@ class Business::CustomerRoutesController < ApplicationController
   end
 
   def update
-    get_record.update(customer_param)
-    if @customer
+    get_record
+    if @customer.update(customer_param)
       redirect_to business_customer_routes_path
     else
       render :new, status: :unprocessable_entity

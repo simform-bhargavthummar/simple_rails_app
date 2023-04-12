@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   #root "students#index"
   #root "employees#index"
   #root "customers#root"
+  # root "user_conts#check_login"
+  root "product_routes#index"
   get '/others', to: "employees#other_operations"
   post '/find_email', to: "employees#find_email"
   get '/update_order', to: "employees#update_order"
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
   post '/login', to: "user_conts#login"
   get '/logout', to: "user_conts#logout"
   get '/search', to: "cars#search"
-  root "user_conts#check_login"
+  
 
   resources :query_products
   resources :customers
@@ -31,7 +33,6 @@ Rails.application.routes.draw do
   resources :product_routes do
     resources :order_routes
   end
-  root "product_routes#index"
 
   namespace :business do
     resources :customer_routes, only: [ :index, :new, :create, :edit, :update ]
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
     resources :v1 
   end
 
-  #root "students#index"
   resources :students
   resources :faculties
   resources :books

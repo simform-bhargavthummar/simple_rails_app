@@ -2,10 +2,11 @@
   <div class="container">
     <h1 class="text-center">Update Products</h1>
     <div class="row">  
-      <%= display_errors(@product) %>
+     
       <div class="col-4">
         <%= form.label :title %><br>
         <%= form.text_field :title, class: "form-control" %>
+				<%= custom_error(@product, :title) %>
       </div>
     </div><br/>
 
@@ -13,6 +14,7 @@
       <div class="col-4">
         <%= form.label :price %><br>
         <%= form.text_field :price, class: "form-control" %>
+				<%= custom_error(@product, :price) %>
       </div>
     </div> <br/>
 
@@ -20,6 +22,7 @@
       <div class="col-4">
         <%= form.label :company_name %><br>
         <%= form.text_field :company_name, class: "form-control" %>
+				<%= custom_error(@product, :company_name) %>
       </div>
     </div> <br/>
     

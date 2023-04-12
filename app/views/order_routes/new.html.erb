@@ -1,11 +1,12 @@
 <%= form_with(model: @order, url: product_route_order_routes_path() ) do |form| %>
   <div class="container">
     <h1 class="text-center">Add Orders</h1>
-    <%= display_errors(@order) %>
+   
     <div class="row">  
       <div class="col-4">
         <%= form.label :quantity %><br>
         <%= form.text_field :quantity, class: "form-control" %>
+        <%= custom_error(@order, :quantity)%>
       </div>
     </div><br/>
 
