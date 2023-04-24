@@ -12,7 +12,7 @@ class UserMailsController < ApplicationController
     @user = UserMail.new(user_params)
     if @user.save
       redirect_to root_path
-    elsif
+    else
       render :new, status: 422
     end
   end

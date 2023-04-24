@@ -83,3 +83,10 @@ gem "bootstrap"
 gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
 
 gem 'mail_form'
+
+group :development, :test do
+   gem "rspec-rails"
+   gem "factory_bot_rails"
+   gem "faker"
+   gem "warden"
+end
