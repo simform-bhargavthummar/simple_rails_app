@@ -1,0 +1,37 @@
+<br><br>
+<div class="container text-center">
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Orders</h1>
+    <%= link_to "Add Orders", new_product_route_order_route_path %><br>
+    
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Id </th>
+            <th scope="col"> Quantity </th>
+            <th scope="col"> Total Price </th>
+            <th scope="col"> Product </th>
+            <th scope="col" colspan= 2 > Action </th>            
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td> <%= order.id %> </td>
+              <td> <%= order.quantity %> </td>
+              <td> <%= order.total %> </td>
+              <td> <%= order.product_routes.title %> </td>
+              <td> <%= link_to "Edit", edit_order_path(order.id), class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", order_path(order.id),
+                               data: { turbo_method: :delete,
+                                       turbo_confirm: "Confirmation for delete the order" },
+                               class: "btn btn-primary" %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

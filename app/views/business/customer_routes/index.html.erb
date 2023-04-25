@@ -1,0 +1,44 @@
+<div class="container text-center">
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Customers</h1>
+    <%= link_to "Add Customers", new_business_customer_route_path %> <br>
+    <%= link_to "Preview", business_preview_path %> <br>
+    <%= link_to "Search", business_search_path %>
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Id </th> 
+            <th scope="col"> Name </th>
+            <th scope="col"> Contact </th>
+            <th scope="col"> Email </th>
+            <th scope="col" colspan=2 > Action </th>
+                        
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td> <%= customer.id %> </td>
+              <td> <%= customer.name %> </td>
+              <td> <%= customer.contact %> </td>
+              <td> <%= customer.email %> </td>
+              <td> <%= link_to "Edit", 
+                  edit_business_customer_route_path(customer.id), 
+                  class: "btn btn-primary" %> </td>
+              <td> <%= link_to "Delete", 
+                business_path(customer.id), 
+                data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure to delete customer?"
+                },
+                class: "btn btn-primary" %> </td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

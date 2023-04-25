@@ -1,0 +1,27 @@
+<div class="container text-center">
+  <div class="row justify-content-md-center"> 
+    <div class="col">
+    <h1>Customers</h1>
+    <%= link_to "Back", business_customer_routes_path %> <br>
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th scope="col"> Id </th> 
+            <th scope="col"> Name </th>
+            <th scope="col"> Email </th>                        
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td> <%= customer.id %> </td>
+              <td> <%= customer.name %> </td>
+              <td> <%= customer.email %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
