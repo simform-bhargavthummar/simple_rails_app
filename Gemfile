@@ -77,3 +77,4 @@ gem 'sass-rails'
 
 gem "pry", "~> 0.14.2"
 gem "prawn"
+gem 'devise'

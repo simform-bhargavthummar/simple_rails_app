@@ -1,0 +1,33 @@
+<%= form_with model: @product do |form| %>
+  <div class="container">
+    <h1 class="text-center"> Product </h1>
+    <div class="row">  
+      <div class="col-4">
+        <%= form.label :name %><br>
+        <%= form.text_field :name , class:"form-control" %>
+        <%= custom_error(@product, :name) %>
+      </div>
+    </div><br/>
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :description %><br>
+        <%= form.text_area :description, class:"form-control" %>
+        <%= custom_error(@product, :description) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-4">
+        <%= form.label :price%><br>
+        <%= form.text_field :price, class:"form-control" %>
+        <%= custom_error(@product, :price) %>
+      </div>
+    </div> <br/>
+
+    <div>
+      <%= form.submit 'Insert data', class:"btn btn-primary" %>
+    </div>
+  </div>
+
+<% end %>
