@@ -1,0 +1,94 @@
+<%= form_with model: @employee do |form| %>
+  <div class="container">
+    <h1 class="text-center">Employee</h1>
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :employee_name %><br>
+        <%= form.text_field :employee_name, class: "form-control" %>
+        <%= custom_error(@employee, :employee_name) %>
+      </div>
+    </div><br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :email %><br>
+        <%= form.email_field :email, class: "form-control" %>
+        <%= custom_error(@employee, :email) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :password %><br>
+        <%= form.password_field :password, class: "form-control" %>
+        <%= custom_error(@employee, :password) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :birth_date %><br>
+        <%= form.date_field :birth_date, class: "form-control" %>
+        <%= custom_error(@employee, :birth_date) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :gender %>: &nbsp;
+        <%= form.radio_button :gender, "male" %>
+        <%= form.label :gender_male, "Male" %> &nbsp;&nbsp;
+        <%= form.radio_button :gender, "female" %>
+        <%= form.label :gender_female, "Female" %><br>
+        <%= custom_error(@employee, :gender) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :hobbies %>: <br>
+        <% EmployeeForm::HOBBIES.each do |key| %>
+          <%= form.check_box :hobbies, { multiple: true }, key, nil %> &nbsp;
+          <%= form.label key %> &nbsp; <br>
+        <% end %><br>  
+        <%= custom_error(@employee, :hobbies) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :address_form %>: <br/>
+        <%= form.fields_for :address_form do |addresses_form| %>
+          <%= addresses_form.label :house_name %> &nbsp;
+          <%= addresses_form.text_field :house_name, class: "form-control" %> <br/>
+
+          <%= addresses_form.label :street_name %> &nbsp;
+          <%= addresses_form.text_field :street_name, class: "form-control" %> <br/>
+
+          <%= addresses_form.label :road %> &nbsp;
+          <%= addresses_form.text_field :road, class: "form-control" %> <br/>
+        <% end %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :mobile_number %>
+        <%= form.number_field :mobile_number, class: "form-control" %>
+        <%= custom_error(@employee, :mobile_number) %>
+      </div>
+    </div> <br/>
+
+    <div class="row">
+      <div class="col-5">
+        <%= form.label :document %>
+        <%= form.file_field :document, class: "form-control" %>
+        <%= custom_error(@employee, :document) %>
+      </div>
+    </div> <br/>
+
+    <div>
+      <%= form.submit "Insert data", class: "btn btn-primary -center" %>
+    </div>
+  </div>
+<% end %>

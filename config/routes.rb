@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   #root "customers#root"
   #root "user_conts#check_login"
   #root "product_routes#index"
-  root to: "product_layouts#index"
+  #root to: "product_layouts#index"
+  root 'employee_forms#index'
   get '/others', to: "employees#other_operations"
   post '/find_email', to: "employees#find_email"
   get '/update_order', to: "employees#update_order"
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   get '/logout', to: "user_conts#logout"
   get '/search', to: "cars#search"
   
-
   resources :query_products
   resources :customers
   resources :orders
@@ -46,10 +46,13 @@ Rails.application.routes.draw do
     resources :v1 
   end
 
-
   devise_for :user_layouts
   resources :order_layouts
   resources :product_layouts
+
+  get '/search_employee', to: 'employee_forms#search', as: "search_employee"
+  resources :employee_forms
+  
   resources :students
   resources :faculties
   resources :books
