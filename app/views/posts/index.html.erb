@@ -1,0 +1,14 @@
+<div class='text-center'>
+  <%= link_to "All Posts", all_post_path, class: "btn btn-primary" %> &nbsp;&nbsp;
+  <%= link_to "Logout", logout_path, class: "btn btn-primary" %> 
+  <%= turbo_frame_tag "first_turbo_frame" do %>
+    <div class="header">
+      <h1>My Posts</h1>
+      <%= link_to "New Post", new_post_path, data: { turbo_frame: dom_id(Post.new) } %> 
+    </div>
+  <% end %>
+  <%= turbo_frame_tag Post.new %>
+  <%= turbo_frame_tag "posts" do %>
+    <%= render @posts %>
+  <% end %>
+</div>
